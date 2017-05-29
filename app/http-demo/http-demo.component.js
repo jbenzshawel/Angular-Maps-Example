@@ -19,8 +19,10 @@ angular.
         
         $scope.validAddress = false; 
 
+        
+
         $scope.findAddress = function () {
-          Maps.getAddress("US", $scope.searchPostal, $scope.searchAddress, function (res) {
+          Maps.getAddressBing("US", $scope.searchPostal, $scope.searchAddress, function (res) {
             window.apiRes = res;        
             if (res != null && typeof (res) === "object" &&
               res.hasOwnProperty("status") && res.status === 200 &&
