@@ -68,3 +68,28 @@ mapsModule.
         return service;
     }
   ]);
+
+var MapsAPI = function () {
+
+    this.bingApiKey =  "Aptu50eoRkIJy-L2AgD0DQ-kGWB0sV1UCb_c1cAg1VnTaqcFpOm4sxbEn-bosvj-";
+
+    this.googleApiKey = "AIzaSyBIxZoeuiX-_zNEIgC9z3hlEFCymWXCe7A";
+
+    this.baseBingUrl = "http://dev.virtualearth.net/REST/v1/Locations?";    
+
+    this.baseGoogleUrl = "https://maps.googleapis.com/maps/api/geocode/json?";
+
+}
+
+// @param coutryRegion A string specifying the ISO country code. example AU
+// @param postalCode A string specifying the ISO country code. example 98178
+// @param addressLine A string specifying the street line of an address. example 1 Microsoft Way
+// @returns string Bing Maps REST Locations API endpoint with api key
+MapsAPI.prototype.getBingRoute = function (countryRegion, postalCode, addressLine) {
+    return this.baseBingUrl + "countryRegion=" + countryRegion + "&postalCode=" + postalCode 
+            + "&addressLine=" + addressLine + "&key=" + this.bingApiKey;
+}
+
+MapsAPI.prototype.getGoogleRoute = function (address) {
+    return this.baseGoogleUrl + "address=" + address + "&key=" + this.googleApiKey;
+}
